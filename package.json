@@ -11,7 +11,7 @@
     "build:nodes-base": "pnpm --filter n8n-nodes-base run build",
     "prepare": "node scripts/prepare.mjs",
     "preinstall": "node scripts/block-npm-install.js",
-    "build": "pnpm run build:nodes-base && pnpm run build:backend && pnpm run build:frontend",
+    "build": "tsup --tsconfig tsconfig.build.json && pnpm copy-nodes-json && tsc-alias -p tsconfig.build.json",
     "build:backend": "turbo run build:backend",
     "build:frontend": "turbo run build:frontend",
     "build:nodes": "turbo run build:nodes",
